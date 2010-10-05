@@ -10,18 +10,18 @@ def find_best_return(ticks, start_date):
     best = BestReturn(start_date)
 
     current = 1.0
-    for (tick, current_date) in ticks:
-        change = 1+(tick*0.01)
+    for (movement, date) in ticks:
+        change = 1+(movement*0.01)
         current *= change
 
         if current < low:
             # better price, not necessarily better roi
             low = high = current
-            low_date = high_date = current_date
+            low_date = high_date = date
 
         if current == low:
             # same best price, but later date (better return over time)
-            low_date = current_date
+            low_date = date
 
         if high < current:
             # better high price
@@ -31,6 +31,6 @@ def find_best_return(ticks, start_date):
                 # better roi, save it
                 best.roi = new_roi
                 best.low_date = low_date
-                best.high_date = current_date
+                best.high_date = date
 
     return best
