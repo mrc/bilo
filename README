@@ -1,7 +1,47 @@
 Finding optimal investment
+==========================
+Requires Python 2.6
+
+
+Running
+=======
+The main program "find_optimal_return.py" can be run via Python, or
+(on Unix/Linux/OSX) can be run directly like so:
+
+    % ./find_optimal_return.py
+
+It reads the file "prices.txt" and writes to the file "output.txt",
+both in the current working directory.
+
+
+Running tests
+=============
+The unit tests in t_return_optimiser.py can be run like so:
+
+    % python t_return_optimiser.py
+
+
+Performance and implementation
+==============================
+Algorithmically, this program performs in linear time using constant
+memory. It accesses the file prices.txt in a linear sequence. Internally,
+it uses generators to avoid storing data.
+
+It is implemented using some high level Python features such as
+regular expressions which would provide some low hanging fruit for
+further optimisation, but I would want to do some profiling with
+representative data first.
+
+I have avoided putting all the logic into a class for its own sake; I
+use a class (return_optimiser.BestReturn) simply as a data structure.
+
 
 Bugs and assumptions
 ====================
+In the event of no available profit (because of no uptick in the
+data), both the low and high dates written will be the start date,
+and the profit will be shown as "0.0".
+
 The program does no explicit input validation. Python will perform
 some (e.g. it will throw an exception if the input file does not
 exist, or if the movement is not convertible to float), but this
@@ -20,8 +60,8 @@ point maths (e.g. 10% cannot be faithfully represented in binary
 floating point).
 
 
-Further optimisation
-====================
+Further investment optimisation
+===============================
 As it stands, the optimiser misses the case where there is more than
 one equivalent return but with a narrower date range. This may or may
 not be a worthwhile optimisation, depending on other investment
