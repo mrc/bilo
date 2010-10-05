@@ -17,7 +17,8 @@ def find_best_return(ticks, start_date):
 
     current = 1.0
     for (tick, current_date) in ticks:
-        current *= tick
+        change = 1+(tick*0.01)
+        current *= change
 
         if current < low:
             # better price, not necessarily better roi
