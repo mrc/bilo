@@ -2,16 +2,6 @@ import unittest
 
 from bilo import *
 
-class PriceGenerator(unittest.TestCase):
-
-    def test_price_generator(self):
-        ticks = [1, 0.92, 1.1, 0.95, 1.07, 0.98, 0.5, 0.6, 3.0]
-
-        prices = [p for p in price_generator(ticks)]
-        expected_prices = [1.0, 0.92, 1.012, 0.961, 1.029, 1.008]
-        for p, e in zip(prices, expected_prices):
-            self.assertAlmostEqual(p, e, places=3)
-
 class FindingReturns(unittest.TestCase):
 
     def test_one_uptick(self):

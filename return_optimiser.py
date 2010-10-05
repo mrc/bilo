@@ -1,9 +1,3 @@
-def price_generator(ticks):
-    current = 1.0
-    for i in ticks:
-        current *= i
-        yield current
-
 class BestReturn(object):
     def __init__(self, start_date):
         self.roi = 1.0
