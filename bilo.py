@@ -5,15 +5,15 @@ def price_generator(ticks):
         yield current
 
 class BestReturn(object):
-    pass
+    def __init__(self, start_date):
+        self.roi = 1.0
+        self.low_date = self.high_date = start_date
 
 def find_best_return(ticks, start_date):
     low = high = 1.0
     low_date = high_date = start_date
 
-    best = BestReturn()
-    best.low_date = best.high_date = start_date
-    best.roi = high/low
+    best = BestReturn(start_date)
 
     current = 1.0
     for (tick, current_date) in ticks:
