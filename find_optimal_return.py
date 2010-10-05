@@ -11,7 +11,7 @@ def ticks_from_file(file):
 
 def find_optimal_return(in_filename, out_filename):
     with open(in_filename, 'r') as inf:
-        start_date = inf.readline()
+        start_date = inf.readline().rstrip()
         best = return_optimiser.find_best_return(
             ticks_from_file(inf), start_date)
 
