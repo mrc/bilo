@@ -1,0 +1,30 @@
+Finding optimal investment
+
+Bugs and assumptions
+====================
+The program does no explicit input validation. Python will perform
+some (e.g. it will throw an exception if the input file does not
+exist, or if the movement is not convertible to float), but this
+may not be sufficient (it depends on the reliability of whatever
+generates prices.txt, for instance).
+
+I have deliberately not validated dates; I assume that the generator
+of prices.txt generates correct format dates. This program has no
+concept of a date and just treats the 2nd column of prices.txt as a
+string. The big benefit here is the program is resilient in the face
+of a date format change (e.g. changing to a 4 digit year).
+
+The output writes the profit field with only a single decimal place.
+This minimises some issues with precision lost due to use of floating
+point maths (e.g. 10% cannot be faithfully represented in binary
+floating point).
+
+
+Further optimisation
+====================
+As it stands, the optimiser misses the case where there is more than
+one equivalent return but with a narrower date range. This may or may
+not be a worthwhile optimisation, depending on other investment
+opportunities and inflation etc., but all things being equal it would
+make sense to invest for the shortest period.
+
