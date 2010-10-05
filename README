@@ -59,6 +59,11 @@ This minimises some issues with precision lost due to use of floating
 point maths (e.g. 10% cannot be faithfully represented in binary
 floating point).
 
+Not a bug: the single division in the program will never divide by zero
+because the only situation where that could happen is if the low price
+is 0, caused by a -100% movement, and in that case no subsequent
+upticks will cause a high price (and trigger the division) because
+movement is expressed as a factor of price, and 0*x=0.
 
 Further investment optimisation
 ===============================
