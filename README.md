@@ -1,6 +1,14 @@
 Finding optimal investment
 ==========================
+A simple calculator to find the maximum return on investment from
+historical price movements.
+
 Requires Python 2.6
+
+Goal
+====
+Given an input list of price movements, provide the optimal dates to
+buy and sell to maximise the return on investment.
 
 
 Running
@@ -72,4 +80,3 @@ one equivalent return but with a narrower date range. This may or may
 not be a worthwhile optimisation, depending on other investment
 opportunities and inflation etc., but all things being equal it would
 make sense to invest for the shortest period.
-
